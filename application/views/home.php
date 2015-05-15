@@ -2,37 +2,127 @@
 if($content == false)
 {
 ?>
-<div class="wrapper">
-  <div id="slider">
-    <div id="slide-wrapper" class="rounded clear"> 
-      <figure id="slide-1"><a class="view" href="#"><img src="images/demo/slider/1.png" alt=""></a></figure>
-      <figure id="slide-2"><a class="view" href="#"><img src="images/demo/slider/2.png" alt=""></a></figure>
-      <figure id="slide-3"><a class="view" href="#"><img src="images/demo/slider/3.png" alt=""></a></figure>
-      <figure id="slide-4"><a class="view" href="#"><img src="images/demo/slider/4.png" alt=""></a></figure>
-      <figure id="slide-5"><a class="view" href="#"><img src="images/demo/slider/5.png" alt=""></a></figure>
-      <ul id="slide-tabs">
-        <li><a href="#slide-1">slide-1</a></li>
-        <li><a href="#slide-2">slide-2</a></li>
-        <li><a href="#slide-3">slide-3</a></li>
-        <li><a href="#slide-4">slide-4</a></li>
-        <li><a href="#slide-5">slide-5</a></li>
-      </ul>
+<div id="section">
+    		<div class="section_top_part">
+                <div class="wrap">
+                	<div class="row">
+						<div class="wrap2">
+                        	<div class="col12 fl_left"><img src="images/welcome-text.png" /></div>
+                        </div>                
+                	</div>
+                	<div class="row">
+                	<div class="wrap">
+                    	<div class="home_text">
+                        	GameDay’s paper novelty products are a perfect fit for sports, television/movies, music, historic, food, and just about any event.
+<br><br>
+GameDay Novelties products are also perfect for branding/promotion and our mobile phone app technology allow custom QR codes or images to be scanned by smart phones for seamless interaction
+with our products and the internet allowing sponsors and advertisers to gather detailed analytics. 
+
+<br>
+SPORTS TV/MOVIES MUSIC HISTORIC FOOD MASCOT CUSTOM QR CODES
+                        
+                        </div>
+                    </div>
+                </div>
+            	</div>
+            </div>
+            <div class="middle_section_part">
+            		<div class="wrap">
+                    	<div class="row">
+                        		<div class="heading">Featured Products</div>
+                        </div>
+                        <div class="row margin_top">
+                                <div class="col4">
+		                                <div class="row">
+        		                        	<div class="radius_box">
+                                    		<div class="box_img"><img src="images/sports.png" /></div>
+                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    	</div>
+                						</div>
+                                        <div class="row">
+                                        	<div class="radius_blue_box">
+                                            	<div class="box_hed">Sports</div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col4">
+		                                <div class="row">
+        		                        	<div class="radius_box">
+                                    		<div class="box_img"><img src="images/food.png" /></div>
+                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    </div>
+                						</div>
+                                        
+                                        <div class="row">
+                                        	<div class="radius_blue_box">
+                                            	<div class="box_hed">Food</div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col4 last">
+                                
+		                                <div class="row">
+        		                        	<div class="radius_box">
+                                    		<div class="box_img"><img src="images/cosplay.png" /></div>
+                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    </div>
+                						</div>
+                                        <div class="row">
+                                        	<div class="radius_blue_box">
+                                            	<div class="box_hed">Cosplay</div>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="row margin_top">
+                                <div class="col4">
+		                                <div class="row">
+        		                        	<div class="radius_box">
+                                    		<div class="box_img"><img src="images/gamefresh.png" /></div>
+                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    </div>
+                						</div>
+                                        <div class="row">
+                                        	<div class="radius_blue_box">
+                                            	<div class="box_hed">Sports/GameFresh Air Freshner</div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col4">
+		                                <div class="row">
+        		                        	<div class="radius_box">
+                                    		<div class="box_img"><img src="images/custom_design.png" /></div>
+                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    </div>
+                						</div>
+                                        <div class="row">
+                                        	<div class="radius_blue_box">
+                                            	<div class="box_hed">Custom Design</div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col4 last">
+		                                <div class="row">
+        		                        	<div class="radius_box">
+                                    		<div class="box_img"><img src="images/qr_code_generator.png" /></div>
+                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    </div>
+                						</div>
+                                        
+                                        <div class="row">
+                                        	<div class="radius_blue_box">
+                                            	<div class="box_hed">QR Code Generator</div>
+                                            </div>
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+            </div>
     </div>
-  </div>
-</div>
 <?php
 }
 else
 {
-?>
-<div class="wrapper row3">
-  <div class="rounded">
-    <main class="container clear"> 
-     <?php echo $content;?>
-      <div class="clear"></div>
-    </main>
-  </div>
-</div>
-<?php
+	 echo $content;
 }
 ?>

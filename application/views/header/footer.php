@@ -1,48 +1,39 @@
-<div class="wrapper row4">
-  <div class="rounded">
-    <footer id="footer" class="clear"> 
-      <div class="one_third first">
-        <figure class="center"><img class="btmspace-15" src="images/demo/worldmap.png" alt="">
-          <figcaption><a href="#">Find Us With Google Maps &raquo;</a></figcaption>
-        </figure>
-      </div>
-      <div class="one_third">
-        <address>
-        Long Educational Facility Name<br>
-        Address Line 2<br>
-        Town/City<br>
-        Postcode/Zip<br>
-        <br>
-        <i class="fa fa-phone pright-10"></i> xxxx xxxx xxxxxx<br>
-        <i class="fa fa-envelope-o pright-10"></i> <a href="#">contact@domain.com</a>
-        </address>
-      </div>
-      <div class="one_third">
-        <p class="nospace btmspace-10">Stay Up to Date With What's Happening</p>
-        <ul class="faico clear">
-          <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-          <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a class="faicon-flickr" href="#"><i class="fa fa-flickr"></i></a></li>
-          <li><a class="faicon-rss" href="#"><i class="fa fa-rss"></i></a></li>
-        </ul>
-        <form class="clear" method="post" action="#">
-          <fieldset>
-            <legend>Subscribe To Our Newsletter:</legend>
-            <input type="text" value="" placeholder="Enter Email Here&hellip;">
-            <button class="fa fa-sign-in" type="submit" title="Sign Up"><em>Sign Up</em></button>
-          </fieldset>
-        </form>
-      </div>
-    </footer>
-  </div>
+<div id="footer">
+	<div class="wrap">
+    	
+        	<div class="col33">
+            	<div class="list">
+                	<ul>
+                    	<li><a href="">ABOUT US</a></li>
+                        <li><a href="">CONTACT US</a></li>
+                        <li><a href="">PRIVACY POLICY</a></li>
+                        <li><a href="">TERMS & CONDITIONS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col6">
+                <div class="row">
+                	<div class="footer_middle_text">
+                                201 RITCHIE ROAD, B-2 <BR />
+                                CAPITOL HEIGHTS, MARYLAND 20748 <BR />
+                           		<span class="footer_middle_text_hed">301-324-7825</span>
+                    </div>
+                </div>
+                <div class="row margin_left">
+                    <div class="social_icon"><img src="images/facebook.png" /></div>
+                    <div class="social_icon"><img src="images/twitter.png" /></div>
+                    <div class="social_icon"><img src="images/youtube.png" /></div>	
+                </div>
+                <div class="row">
+                	<div class="copyright_text">Copyright 2014 GameDay Novelties. Site by Tisengine SEO. All Rights Reserved.</div>
+                </div>
+            </div>
+            <div class="col34 last">
+            		<div class="footer_logo"><img src="images/footer_logo.png" /></div>
+            </div>
+    </div>
 </div>
-
-<div class="wrapper row5">
-  <div id="copyright" class="clear">
-    <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#">Umang Glass</a></p>
-    <p class="fl_right">Develop by :jignesh & kk, Email:<a target="_blank" href="#" title="">myeml2014@outlook.com</a></p>
-  </div>
 </div>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

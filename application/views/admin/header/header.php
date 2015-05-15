@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/style_admin.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/thickbox.css">
 <?php echo $xajax_js;?>
-<script language="javascript" type="text/javascript" src="<?php echo base_url();?>js/jquery-1.2.6.min.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
 <?php
 if(isset($addTinymce))
 {
