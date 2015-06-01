@@ -7,7 +7,7 @@ function fnadd()
 {
 	getFormPop(1);
 	$("form :input").attr("disabled",false);
-	$("#btnAdd").attr("disabled",true);
+	//$("#btnAdd").attr("disabled",true);
 	$("#btnAdd").removeClass("button");
 	$("#btnAdd").addClass("disbutton");
 	$("#btnEdit").attr("disabled",true);
@@ -80,7 +80,7 @@ function fnedit()
 {
 	getFormPop(1);
 	$("form :input").attr("disabled",false);
-	$("#btnAdd").attr("disabled",true);
+	//$("#btnAdd").attr("disabled",true);
 	$("#btnAdd").removeClass("button");
 	$("#btnAdd").addClass("disbutton");
 	$("#btnEdit").attr("disabled",true);
@@ -294,4 +294,11 @@ function jObjCount(Obj)
 		count++;
 	});
 	return count;
+}
+function validEmail(strEmail)
+{	
+	if (strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)
+		return true;
+	else
+		return false;
 }

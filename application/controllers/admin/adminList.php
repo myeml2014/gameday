@@ -13,16 +13,16 @@ class adminList extends CI_Controller {
 	{
 		$headerData = array();
 		$footerData = array();
-		$Data = array();
-		$modulePathUrl = base_url().APPPATH.'views/admin/admin_account/';
+		$data = array();
+		$modulePathUrl = BASE_URL.APPPATH.'views/admin/admin_account/';
 		$this->xajax->register(XAJAX_FUNCTION, array('load',&$this,'load'));
 		$this->xajax->register(XAJAX_FUNCTION, array('setForm',&$this,'setForm'));
 		$this->xajax->register(XAJAX_FUNCTION, array('save',&$this,'save'));
 		$this->xajax->register(XAJAX_FUNCTION, array('edit',&$this,'edit'));
 		$this->xajax->register(XAJAX_FUNCTION, array('delete',&$this,'delete'));
 		$this->xajax->processRequest();
-		$this->xajax->configure('javascript URI',base_url());
-		$headerData['xajax_js'] = $this->xajax->getJavascript(base_url());
+		$this->xajax->configure('javascript URI',BASE_URL);
+		$headerData['xajax_js'] = $this->xajax->getJavascript(BASE_URL);
                 
         $headerData['onload'] = true; 
 		$headerData['module_js'] = $modulePathUrl.'adminList.js';
@@ -68,6 +68,7 @@ class adminList extends CI_Controller {
         $arrVal['username'] = $arg['txtUsername'];
         $arrVal['password'] = md5($arg['txtPassword']);
         $arrVal['status'] = $arg['selStatus'];
+	$arrVal['added_by'] = $this->session->userdata('user_id');
         $sucess = $this->db->insert('tbl_admin',$arrVal);
         if($sucess)
         {
@@ -90,7 +91,8 @@ class adminList extends CI_Controller {
 		$arrVal['email'] = $arg['txtEmail'];
         $arrVal['username'] = $arg['txtUsername'];
 		$arrVal['status'] = $arg['selStatus'];
-        $sucess = $this->db->update('tbl_admin',$arrVal,array('id'=>$id));
+        $arrVal['added_by'] = $this->session->userdata('user_id');
+		$sucess = $this->db->update('tbl_admin',$arrVal,array('id'=>$id));
         if($sucess)
         {
             $objResponse->alert($this->lang->line('msg_update'));

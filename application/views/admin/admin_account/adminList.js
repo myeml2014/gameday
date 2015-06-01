@@ -21,6 +21,18 @@ function renderJson(Obj,count)
 }
 function validate()
 {
+	if($("#txtFname").val() == "")
+	{
+		alert(msg_fname);
+		$("#txtFname").focus();
+		return false;
+	}
+	if($("#txtLname").val() == "")
+	{
+		alert(msg_lname);
+		$("#txtLname").focus();
+		return false;
+	}
 	if($("#txtUsername").val() == "")
 	{
 		alert(msg_user);
@@ -31,6 +43,24 @@ function validate()
 	{
 		alert(msg_pass);
 		$("#txtPassword").focus();
+		return false;
+	}
+	if($("#txtEmail").val() == "")
+	{
+		alert(msg_email);
+		$("#txtEmail").focus();
+		return false;
+	}
+	if(!validEmail($("#txtEmail").val()))
+	{
+		alert(msg_valid_email);
+		$("#txtEmail").focus();
+		return false;
+	}
+	if($("#selStatus").val() == "")
+	{
+		alert(msg_status);
+		$("#selStatus").focus();
 		return false;
 	}
 	return true;

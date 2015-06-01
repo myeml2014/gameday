@@ -1,6 +1,6 @@
 	</div>
 	<div class="clearfix"></div>
-	<div id="fotter"><a>Footer here...</a></div>
+	<div id="fotter"><a>Copyright <?php echo date('Y')?> GameDay Novelties. All Rights Reserved.</a></div>
 </div>
 <div id="mask" style="display: none;" >
 <?php 

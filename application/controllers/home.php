@@ -3,19 +3,19 @@ class home extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('main_menu');
+		$this->load->model('category_model');
+		$this->load->model('topflesh');
+		$this->load->model('footer_links_model');
 	}
-	public function index($page)
+	public function index()
 	{
-		$data = $this->main_menu->loadMenu();
-		$urlArr = explode("/",$_SERVER['REQUEST_URI']);
-		$activeLink = end($urlArr);
-		if($activeLink == MAIN_FOLDER)
-		$activeLink = MAIN_FOLDER;
-		$data['activeLink'] = $activeLink;
+		$data = $this->category_model->loadMenu();
+		$data['is_banner'] = true;
+		$data['bannerArr'] = $this->topflesh->getAllBanners();
 		$this->load->view('header/header',$data);
-		$content = $this->main_menu->getContent($activeLink);
-		$this->load->view('home',array('content'=>$content));
-		$this->load->view('header/footer');
+		$data2 = $this->category_model->getAllCategory();
+		$this->load->view('home',$data2);
+		$data3 = $this->footer_links_model->getAllFooterLinks();
+		$this->load->view('header/footer',$data3);
 	}
 }

@@ -1,4 +1,5 @@
 // JavaScript Document
+fielterArr = ["txtSearch_title"];
 function renderJson(Obj,count)
 {
 	jObj = Obj;
@@ -8,7 +9,7 @@ function renderJson(Obj,count)
 		tbl += "<tr class='"+((i%2 == 0)?"trEven":"trOdd")+"' onclick='trEdit("+item.id+",this)'>";
 		tbl += "<td>"+(hdnStart+i+1)+"</td>";
 		tbl += "<td>"+item.title+"</td>";
-		tbl += "<td><img src='"+item.link+"' height='50' width='50' alt='No Image'></td>";
+		tbl += "<td><img src='"+BaseUrl+'images/top_flesh/'+item.link+"' height='50' width='50' alt='No Image'></td>";
 		tbl += "</tr>";
     });
     if(tbl == "")
@@ -18,10 +19,16 @@ function renderJson(Obj,count)
 }
 function validate()
 {
+	if($("#txtTitle").val() == "")
+	{
+		alert(msg_img_title);
+		$("#txtTitle").focus();
+		return false;
+	}
 	return true;
 }
-function postFrm()
+function postFrm(id)
 {
-	document.frm.action=BaseUrl."admin/top_flesh/postFrm";
-	document.frm.submit();
+	document.frmForm.action=BaseUrl+"admin/top_flesh/postFrm/"+id;
+	document.frmForm.submit();
 }

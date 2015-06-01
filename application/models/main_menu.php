@@ -5,13 +5,13 @@ class main_menu extends CI_Model
 	{
 		parent::__construct();
 	}
-	function get_all($start = 0,$whArr)
+	function get_all($start = 0,$whArr=array())
 	{
 	    $whStr = '';
-	    if($whArr[0] != ''){
+	    if(isset($whArr[0]) && $whArr[0] != ''){
 	        $whStr .= " AND menu_title like '%".$whArr[0]."%' ";
 	    }
-		if($whArr[0] != ''){
+		if(isset($whArr[0]) && $whArr[1] != ''){
 	        $whStr .= " AND menu_link like '%".$whArr[1]."%' ";
 	    }
 		$data = array();
@@ -25,13 +25,13 @@ class main_menu extends CI_Model
 		}
 		return $data;		
 	}
-	function get_all_count($whArr)
+	function get_all_count($whArr=array())
 	{
 	    $whStr = '';
-	    if($whArr[0] != ''){
+	    if(isset($whArr[0]) && $whArr[0] != ''){
 	        $whStr .= " AND menu_title like '%".$whArr[0]."%' ";
 	    }
-		if($whArr[0] != ''){
+		if(isset($whArr[1]) && $whArr[1] != ''){
 	        $whStr .= " AND menu_link like '%".$whArr[1]."%' ";
 	    }
         $q = $this->db->query("select count(*) as cnt from tbl_main_menu where 1=1 $whStr ");

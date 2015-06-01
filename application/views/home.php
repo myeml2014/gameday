@@ -1,5 +1,5 @@
 <?php
-if($content == false)
+if(!isset($content))
 {
 ?>
 <div id="section">
@@ -7,7 +7,7 @@ if($content == false)
                 <div class="wrap">
                 	<div class="row">
 						<div class="wrap2">
-                        	<div class="col12 fl_left"><img src="images/welcome-text.png" /></div>
+                        	<div class="col12 fl_left"><img src="<?php echo BASE_URL;?>images/welcome-text.png" /></div>
                         </div>                
                 	</div>
                 	<div class="row">
@@ -32,89 +32,39 @@ SPORTS TV/MOVIES MUSIC HISTORIC FOOD MASCOT CUSTOM QR CODES
                         		<div class="heading">Featured Products</div>
                         </div>
                         <div class="row margin_top">
-                                <div class="col4">
+                               <?php
+							   $i = 0;
+							   foreach($cat_id as $id)
+							   {
+									if(($i+1)%3 == 0)
+									$is_last = " last";
+									else
+									$is_last = "";
+									if(file_exists("images/cat_imgs/".$cat_image[$i]))
+									$img_path = BASE_URL."images/cat_imgs/".$cat_image[$i];
+									else
+									$img_path = BASE_URL."images/noimage.png";
+									
+									$cat_link = BASE_URL."category/".$index_key[$i];
+							   	?>
+						    		<div class="col4 <?php echo $is_last;?>">
 		                                <div class="row">
         		                        	<div class="radius_box">
-                                    		<div class="box_img"><img src="images/sports.png" /></div>
-                                            <div class="shop"><img src="images/shopnow.png" /></div>
+                                    		<div class="box_img"><a href="<?php echo $cat_link;?>"><img src="<?php echo $img_path;?>" /></a></div>
+                                            <div class="shop"><a href="<?php echo $cat_link;?>"><img src="<?php echo BASE_URL;?>images/shopnow.png" /></a></div>
                                     	</div>
                 						</div>
                                         <div class="row">
                                         	<div class="radius_blue_box">
-                                            	<div class="box_hed">Sports</div>
+                                            	<div class="box_hed"><a href="<?php echo $cat_link;?>" class="box_hed"><?php echo $cat_nm[$i];?></a></div>
                                             </div>
                                         </div>
                                 </div>
-                                <div class="col4">
-		                                <div class="row">
-        		                        	<div class="radius_box">
-                                    		<div class="box_img"><img src="images/food.png" /></div>
-                                            <div class="shop"><img src="images/shopnow.png" /></div>
-                                    </div>
-                						</div>
-                                        
-                                        <div class="row">
-                                        	<div class="radius_blue_box">
-                                            	<div class="box_hed">Food</div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="col4 last">
-                                
-		                                <div class="row">
-        		                        	<div class="radius_box">
-                                    		<div class="box_img"><img src="images/cosplay.png" /></div>
-                                            <div class="shop"><img src="images/shopnow.png" /></div>
-                                    </div>
-                						</div>
-                                        <div class="row">
-                                        	<div class="radius_blue_box">
-                                            	<div class="box_hed">Cosplay</div>
-                                            </div>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="row margin_top">
-                                <div class="col4">
-		                                <div class="row">
-        		                        	<div class="radius_box">
-                                    		<div class="box_img"><img src="images/gamefresh.png" /></div>
-                                            <div class="shop"><img src="images/shopnow.png" /></div>
-                                    </div>
-                						</div>
-                                        <div class="row">
-                                        	<div class="radius_blue_box">
-                                            	<div class="box_hed">Sports/GameFresh Air Freshner</div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="col4">
-		                                <div class="row">
-        		                        	<div class="radius_box">
-                                    		<div class="box_img"><img src="images/custom_design.png" /></div>
-                                            <div class="shop"><img src="images/shopnow.png" /></div>
-                                    </div>
-                						</div>
-                                        <div class="row">
-                                        	<div class="radius_blue_box">
-                                            	<div class="box_hed">Custom Design</div>
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="col4 last">
-		                                <div class="row">
-        		                        	<div class="radius_box">
-                                    		<div class="box_img"><img src="images/qr_code_generator.png" /></div>
-                                            <div class="shop"><img src="images/shopnow.png" /></div>
-                                    </div>
-                						</div>
-                                        
-                                        <div class="row">
-                                        	<div class="radius_blue_box">
-                                            	<div class="box_hed">QR Code Generator</div>
-                                            </div>
-                                        </div>
-                                </div>
+									
+								<?php
+									$i++;
+								}
+								?>
                         </div>
                     </div>
             </div>
@@ -123,6 +73,16 @@ SPORTS TV/MOVIES MUSIC HISTORIC FOOD MASCOT CUSTOM QR CODES
 }
 else
 {
-	 echo $content;
+?>
+<div id="section">
+	<div class="middle_section_part">
+		<div class="wrap">
+			<div class="row">
+			<?php echo $content; ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php	 
 }
 ?>

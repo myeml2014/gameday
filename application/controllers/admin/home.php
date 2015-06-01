@@ -11,7 +11,8 @@ class home extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('admin/header/header');
+		$data = array('Title'=>'Gameday');
+		$this->load->view('admin/header/header',$data);
 		$this->load->view('admin/home');
 		$this->load->view('admin/header/footer');
 	}

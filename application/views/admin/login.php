@@ -2,7 +2,7 @@
 <html>
 <head>
 <title><?php echo $Title;?></title>
-<link href="<?php echo base_url();?>css/login.css" rel="stylesheet" type="text/css">
+<link href="<?php echo BASE_URL;?>css/login.css" rel="stylesheet" type="text/css">
 <script language="javascript">
 function SubmitForm()
 {
@@ -42,15 +42,15 @@ function Reset()
               <td align="center" valign="top" class="tableMainBackground">
                 <table width="95%" align="center" border="0" cellspacing="0" cellpadding="0" class="tableMainBackground">
               <tr>
-                <td align="left" class="WelcomescreenHeadingpurple">myphpweb admin</td>
+                <td align="left" class="WelcomescreenHeadingpurple">Gameday admin</td>
               </tr>
               <tr>
                 <td align="center" >
-                <form name="login" action="<?php echo base_url()."admin/login/veryfylogin";?>" method="post">
+                <form name="login" action="<?php echo BASE_URL."admin/login/veryfylogin";?>" method="post">
             	<input type="hidden" name="act" value="Submit">
                 <table width="100%" height="100%" border="0" align="center" cellpadding="3" cellspacing="1" class="tableMiddleBackground_roundedcorner">
                     <tr>
-                      <td height="25" colspan="2" align="center" class="messageFont">&nbsp;<?php echo $err; ?></td>
+                      <td height="25" colspan="2" align="center" class="messageFont">&nbsp;<?php echo (isset($err))?$err:''; ?></td>
                     </tr>
                     <tr>
                       <td width="36%" height="25" align="right"><b><?php echo $this->lang->line('login_username'); ?>:</b></td>

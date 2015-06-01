@@ -1,5 +1,5 @@
 <script type="text/javascript">
-var BaseUrl = '<?php echo base_url();?>';
+var BaseUrl = '<?php echo BASE_URL;?>';
 </script>
 <div class="adminTitle" align="left">
 <?php echo $this->lang->line('home_top_flesh'); ?>

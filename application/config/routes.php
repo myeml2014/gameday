@@ -42,7 +42,9 @@ $route['admin'] = "admin/home";
 $route['admin/(:any)'] = "admin/$1";
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-$route['(:any)'] = 'home/index/$1';
+$route['category/(:any)'] = "category/index/$1";
+$route['footer_links/(:any)'] = "footer_links/index/$1";
+//$route['(:any)'] = 'home/index/$1';
 
 
 /* End of file routes.php */

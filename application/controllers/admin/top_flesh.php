@@ -4,7 +4,7 @@ class top_flesh extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Adminuser');
-		$this->load->model('Topflesh');
+		$this->load->model('topflesh');
 		if(!$this->Adminuser->is_login())
 		{
 			redirect('admin/login');
@@ -14,18 +14,18 @@ class top_flesh extends CI_Controller {
 	{
 		$headerData = array();
 		$footerData = array();
-		$Data = array();
-		$modulePathUrl = base_url().APPPATH.'views/admin/top_flesh/';
+		$data = array();
+		$modulePathUrl = BASE_URL.APPPATH.'views/admin/top_flesh/';
 		$this->xajax->register(XAJAX_FUNCTION, array('load',&$this,'load'));
 		$this->xajax->register(XAJAX_FUNCTION, array('setForm',&$this,'setForm'));
 		$this->xajax->register(XAJAX_FUNCTION, array('save',&$this,'save'));
 		$this->xajax->register(XAJAX_FUNCTION, array('edit',&$this,'edit'));
 		$this->xajax->register(XAJAX_FUNCTION, array('delete',&$this,'delete'));
 		$this->xajax->processRequest();
-		$this->xajax->configure('javascript URI',base_url());
-		$headerData['xajax_js'] = $this->xajax->getJavascript(base_url());
+		$this->xajax->configure('javascript URI',BASE_URL);
+		$headerData['xajax_js'] = $this->xajax->getJavascript(BASE_URL);
                 
-      $headerData['onload'] = true; 
+      	$headerData['onload'] = true; 
 		$headerData['module_js'] = $modulePathUrl.'top_flesh.js';
 		$this->load->view('admin/header/header',$headerData);
 		$this->load->view('admin/top_flesh/top_flesh',$data);
@@ -39,35 +39,41 @@ class top_flesh extends CI_Controller {
 		$whArr = array();
 		if($param != '')
 		$whArr = explode(",",$param);
-		$data = $this->Topflesh->get_all($start,$whArr);
-		$objResponse->script('renderJson('.json_encode($data).','.$this->Topflesh->get_all_count($whArr).')');
+		$data = $this->topflesh->get_all($start,$whArr);
+		$objResponse->script('renderJson('.json_encode($data).','.$this->topflesh->get_all_count($whArr).')');
 		return $objResponse;
 	}
 	function setForm($id)
 	{
 		$objResponse=new xajaxResponse();
-		$data = $this->Topflesh->get_record($id);
+		$data = $this->topflesh->get_record($id);
 		$objResponse->assign("txtTitle","value",$data->title);
-		$objResponse->assign("txtTitle","value",$data->title);
+		$objResponse->assign("imgImg","src",BASE_URL."images/top_flesh/".$data->link);
 		$objResponse->assign("txtOther","value",$data->detail);
 		return $objResponse;
 	}
 	function save($arg)
 	{
 		$objResponse=new xajaxResponse();
-      $arrVal = array();
-      $arrVal['title'] = $arg['txtTitle'];
-		if($arg['fImg'] !='')      
-      $arrVal['link'] = base_url()."images/top_flesh/".$arg['fImg'];
-      $arrVal['detail'] = $arg['txtOther'];
-      $sucess = $this->db->insert('tbl_top_flesh',$arrVal);
-      if($sucess)
-      {
-          $objResponse->alert($this->lang->line('msg_insert'));
-          $objResponse->script("postFrm()");
-          $objResponse->script("fnreset()");
-          $objResponse->script("xajax_load()");
-      }
+	    $arrVal = array();
+      	$arrVal['title'] = $arg['txtTitle'];
+	    $arrVal['detail'] = $arg['txtOther'];
+		$arrVal['added_by'] = $this->session->userdata('user_id');
+      	$sucess = $this->db->insert('tbl_top_flesh',$arrVal);
+      	if($sucess)
+      	{
+			$ins_id = $this->db->insert_id(); 
+          	$objResponse->alert($this->lang->line('msg_insert'));
+          	if($arg['fImg']!="")
+			{
+				$objResponse->script("postFrm($ins_id)");
+			}
+			else
+			{
+          		$objResponse->script("fnreset()");
+          		$objResponse->script("xajax_load()");
+			}
+      	}
       return $objResponse;		
 	}
 	function edit($id,$arg)
@@ -75,17 +81,22 @@ class top_flesh extends CI_Controller {
 		$objResponse=new xajaxResponse();
 		$arrVal = array();
 		$arrVal['title'] = $arg['txtTitle'];
-		if($arg['fImg'] !='')
-      $arrVal['link'] = base_url()."images/top_flesh/".$arg['fImg'];
-      $arrVal['detail'] = $arg['txtOther'];
-      $sucess = $this->db->update('tbl_top_flesh',$arrVal,array('id'=>$id));
-      if($sucess)
-      {
-          $objResponse->alert($this->lang->line('msg_update'));
-          $objResponse->script("postFrm()");
-          $objResponse->script("fnreset()");
-		    $objResponse->script("xajax_load()");
-      }
+      	$arrVal['detail'] = $arg['txtOther'];
+		$arrVal['added_by'] = $this->session->userdata('user_id');
+      	$sucess = $this->db->update('tbl_top_flesh',$arrVal,array('id'=>$id));
+      	if($sucess)
+      	{
+        	$objResponse->alert($this->lang->line('msg_update'));
+          	if($arg['fImg']!="")
+			{
+				$objResponse->script("postFrm($id)");
+			}
+			else
+			{
+          		$objResponse->script("fnreset()");
+		    	$objResponse->script("xajax_load()");
+			}
+      	}
       return $objResponse;
 	}
 	function delete($id)
@@ -100,17 +111,19 @@ class top_flesh extends CI_Controller {
         }
 		return $objResponse;
 	}
-	function postFrm()
+	function postFrm($id)
 	{
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-		if() {
-			$this->load->library('upload', $config);
-			$this->upload->do_upload('fImg');
-
-			$username = $this->input->post("hdnImg");
-		}
+		$config['max_size']	= '10240';
+		$config['max_width']  = '4000';
+	    $config['max_height']  = '4000';
+		$config['req_height']  = '550';
+		$config['req_width']  = '1300';
+		$config['upload_path'] = IMAGE_PATH.'top_flesh';
+	    $config['allowed_types'] = 'gif|jpg|png';
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('fImg');
+		$upArr = $this->upload->data();
+        $this->topflesh->updateImage( $upArr['file_name'],$id);
+        redirect(BASE_URL."admin/top_flesh");
 	}
-		
 }
